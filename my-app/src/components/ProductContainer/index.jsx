@@ -52,10 +52,19 @@ if (target.count === 0){
 }
 };
 
-// console.log(basket);
+const deleteFromBasket = value => setToBasket(basket.filter(({id}) => id !==value));
+
+const clearBasket = () => setToBasket([]);
+
 
   return (
-    <div> <BasketContainer basket={basket} increment={increment} decrement={decrement}/>
+    <div> <BasketContainer 
+    basket={basket} 
+    increment={increment} 
+    decrement={decrement}
+    clearBasket={clearBasket}
+    deleteFromBasket={deleteFromBasket}/>
+
     <div className={s.container}>
         {
          products.map(product => 

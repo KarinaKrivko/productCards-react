@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './style.module.css';
 
-function Product({id, title,description,price,image, deleteProduct, addToBasket}) 
+function Product({id, title, description, price, image, deleteProduct, addToBasket}) 
 {
 
     return (
