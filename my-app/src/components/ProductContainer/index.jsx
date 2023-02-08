@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import BasketContainer from '../BasketContainer';
 import Product from '../Product';
 import s from './style.module.css';
 
@@ -23,13 +24,22 @@ function ProductContainer() {
 const deleteProduct = delId => console.log(products.find(({id}) => id === delId).title); 
 
 const addToBasket = value => {
+
+  const productFromBasket =  basket.find(({id}) => id === value);
+  if (productFromBasket){
+    productFromBasket.count++;
+    setToBasket([...basket])
+  }else{
     const target = products.find(({id}) => id === value);
     setToBasket([...basket, {...target, count:1}]);
+  }
 };
+
 
 console.log(basket);
 
   return (
+    <div> <BasketContainer basket={basket}/>
     <div className={s.container}>
         {
          products.map(product => 
@@ -38,6 +48,7 @@ console.log(basket);
         addToBasket={addToBasket}
          />)
         }
+    </div>
     </div>
   )
 }
