@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './style.module.css';
 
-function BasketItem({title, price, count}) {
+function BasketItem({id, title, price, count, increment, decrement}) {
 
   return (
     <div className={s.item}>
@@ -9,8 +9,8 @@ function BasketItem({title, price, count}) {
     <p>{price}</p>
     <p>{count}</p>
     <div className={s.btn}>
-    <button>-</button>
-    <button>+</button>
+    <button onClick={() => decrement(id)}>-</button>
+    <button onClick={() => increment(id)}>+</button>
     </div>
     </div>
   );

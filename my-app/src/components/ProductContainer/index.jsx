@@ -35,11 +35,27 @@ const addToBasket = value => {
   }
 };
 
+const increment = value => {
 
-console.log(basket);
+  const target = basket.find(({id}) => id === value);
+  target.count++;
+  setToBasket([...basket]);
+};
+
+const decrement = value => {
+const target = basket.find(({id}) => id === value);
+  target.count--;
+if (target.count === 0){
+  setToBasket(basket.filter(elem => elem !== target));
+}else{
+  setToBasket([...basket]);
+}
+};
+
+// console.log(basket);
 
   return (
-    <div> <BasketContainer basket={basket}/>
+    <div> <BasketContainer basket={basket} increment={increment} decrement={decrement}/>
     <div className={s.container}>
         {
          products.map(product => 
